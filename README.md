@@ -1,6 +1,6 @@
 # Web Scraping Telegram Posts and Content
 
-This code aims to **scrape data** from selected Telegram Channels, Groups or Chats through the Telethon Library, also integrating Google's Gspread Library **and printing the results in a Google Spreadsheet in real time**.
+This code **<a href="https://github.com/ergoncugler/web-scraping-telegram/blob/main/web-scraping-telegram.py">[code here]</a>** aims to **scrape data** from selected Telegram Channels, Groups or Chats through the Telethon Library, also integrating Google's Gspread Library **and printing the results in a Google Spreadsheet in real time**.
 
 In summary, it is possible to set **'Periods' (date), 'Keywords' (search) and 'ID' (Channels, Groups or Chats)** to scrape all the desired content, returning: **'Scraping ID', 'Group', 'Author ID', 'Content', 'Date ', 'Message ID', 'Author', 'Views', 'Reactions', 'Shares', 'Media', 'Comments'**.
 
