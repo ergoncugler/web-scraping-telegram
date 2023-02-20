@@ -132,4 +132,4 @@ Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.
 
 ### How to Cite it:
 
-**SILVA, Ergon Cugler de Moraes Silva. Web Scraping Telegram Posts and Content. (feb) 2023. Avaliable at: <a>https://github.com/ergoncugler/web-scraping-telegram/<a>.**
+**SILVA, Ergon Cugler de Moraes. Web Scraping Telegram Posts and Content. (feb) 2023. Avaliable at: <a>https://github.com/ergoncugler/web-scraping-telegram/<a>.**
