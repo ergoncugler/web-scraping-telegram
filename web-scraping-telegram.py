@@ -79,14 +79,11 @@ async with TelegramClient(username, api_id, api_hash) as client:
 
       # if there are comments # important to come after the content list with append following it, so as not to confuse the 'message' and collect only the contents of the comments
       comments = []
-      if message.reply_to == None:
-        pass
-      else:
-        try:
-          async for message in client.iter_messages(channel, reply_to=message.id):
-            comments.append(message.text)
-        except:
-          comments = ['it was a possible adjustment made in the chat, ex: a message was pinned']
+      try:
+        async for message in client.iter_messages(channel, reply_to=message.id):
+          comments.append(message.text)
+      except:
+        comments = ['possible adjustment']
       comments = ', '.join(comments).replace(', ', ';\n')
 
       # append of the content with the comments
