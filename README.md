@@ -10,6 +10,8 @@ To avoid impacts from code breaks during the scraping process, it was decided **
 It was asked to scrape Jair Bolsonaro's Channel from Telegram between january 1st 2019 and january 1st 2023, then it returned 5241 posts:
 ![image](https://user-images.githubusercontent.com/81989837/219953529-959d6f15-8f9b-4b4c-b010-91def95b73f6.png)
 
+It can be accessed at: **<a href="https://github.com/ergoncugler/bolsonaro-telegram">[Worksheet of Scraped Telegram Bolsonaro's Posts]</a>**.
+
 ___
 
 ## !Pip Before Coding
@@ -117,3 +119,7 @@ ___
 Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.com">contato@ergoncugler.com</a>
 </br>Master's Program in Public Administration and Government, Getulio Vargas Foundation (FGV)
 </br>Funded Researcher by the National Council for Scientific and Technological Development (CNPq)
+
+### How to Cite it:
+
+**SILVA, Ergon Cugler de Moraes Silva. Web Scraping Telegram. (feb) 2023. Avaliable at: <a>https://github.com/ergoncugler/web-scraping-telegram/<a>.**
