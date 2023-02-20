@@ -12,6 +12,12 @@ It was asked to scrape Jair Bolsonaro's Channel from Telegram between january 1s
 
 It can be accessed at: **<a href="https://github.com/ergoncugler/bolsonaro-telegram">[Worksheet of Scraped Telegram Bolsonaro's Posts]</a>**.
 
+## Recommendation
+
+### [Data] [Academic Research] [Scientific Research] [Public Policy] [Political Science] [Data Science]
+
+Its use is highly encouraged and recommended for academic and scientific research, content analysis, sentiment and speech. It is free and open, and academic use is encouraged. Its responsible use is the sole responsibility of those who adapt and manipulate the data.
+
 ___
 
 ## !Pip Before Coding
@@ -116,10 +122,8 @@ ___
 
 ## Author Info:
 
-Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.com">contato@ergoncugler.com</a>
-</br>Master's Program in Public Administration and Government, Getulio Vargas Foundation (FGV)
-</br>Funded Researcher by the National Council for Scientific and Technological Development (CNPq)
+Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.com">contato@ergoncugler.com</a> / Master's Program in Public Administration and Government, Getulio Vargas Foundation (FGV) / Funded Researcher by the National Council for Scientific and Technological Development (CNPq).
 
 ### How to Cite it:
 
-**SILVA, Ergon Cugler de Moraes Silva. Web Scraping Telegram. (feb) 2023. Avaliable at: <a>https://github.com/ergoncugler/web-scraping-telegram/<a>.**
+**SILVA, Ergon Cugler de Moraes Silva. Web Scraping Telegram Posts and Content. (feb) 2023. Avaliable at: <a>https://github.com/ergoncugler/web-scraping-telegram/<a>.**
