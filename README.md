@@ -128,7 +128,7 @@ ___
 
 ## Author Info:
 
-Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.com">contato@ergoncugler.com</a> / Master's Program in Public Administration and Government, Getulio Vargas Foundation (FGV) / Funded Researcher by the National Council for Scientific and Technological Development (CNPq).
+Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.com">contato@ergoncugler.com</a> / Master's Program in Public Administration and Government, Getulio Vargas Foundation (FGV) / Funded Researcher by the National Council for Scientific and Technological Development (CNPq) / Center of Bureaucratic Studies (NEB) / Núcleo de Estudos da Burocracia (NEB).
 
 ### How to Cite it:
 
