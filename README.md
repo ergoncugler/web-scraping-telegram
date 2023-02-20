@@ -120,6 +120,12 @@ The output can be found in this format:
 
 ___
 
+## More About:
+
+Its use is highly encouraged and recommended for academic and scientific research, content analysis, sentiment and speech. It is free and open, and academic use is encouraged. Its responsible use is the sole responsibility of those who adapt and manipulate the data.
+
+___
+
 ## Author Info:
 
 Ergon Cugler de Moraes Silva, from Brazil, mailto: <a href="contato@ergoncugler.com">contato@ergoncugler.com</a> / Master's Program in Public Administration and Government, Getulio Vargas Foundation (FGV) / Funded Researcher by the National Council for Scientific and Technological Development (CNPq).
