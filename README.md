@@ -141,7 +141,7 @@ ___
 
 #### **03.)** The output can be found as '.parquet' and transformed into Excel, for example:
 
-![image](https://user-images.githubusercontent.com/81989837/219954132-a164007c-b18f-4ad9-a37b-ebbdc511ad60.png)
+![image](https://github.com/user-attachments/assets/b18c3c0e-8efc-49ab-bfac-4c525d4452b9)
 
 ___
 
