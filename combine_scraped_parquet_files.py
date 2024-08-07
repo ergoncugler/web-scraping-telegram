@@ -34,7 +34,7 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
     Example:
     folder_path = r'C:\Users\Public\PyCharmProjects\Data_Conspira'
     duplicate_columns = ['Group', 'Message ID']
-    output_file_path = os.path.join(folder_path, 'data_conspira_telegram.parquet')
+    output_file_path = os.path.join(folder_path, 'unified_data_telegram.parquet')
 
     combine_parquet_files(folder_path, duplicate_columns, output_file_path)
     """
