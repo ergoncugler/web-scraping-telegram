@@ -15,7 +15,7 @@ Once the data is extracted into `.parquet` files, various authoring tools are av
 | **3. Using Google Colab for async operations:** One advantage of using Google Colab is the ability to run `async` functions without needing to define them within an `async def`. If you plan to use PyCharm or another IDE, consider adapting the code with an `async def`. |
 | **4. Handling JSON in 'Comments List' column:** The `'Comments List'` column stores comments in a JSON list format. Remember to decode this JSON when converting to a spreadsheet or presenting the data. |
 
-### Output Example:
+### Output example:
 ✅ It was asked to scrape Donald Trump's contents from several Brazilian channels on Telegram, which returned approximately 17,000 posts:
 ![image](https://github.com/user-attachments/assets/b18c3c0e-8efc-49ab-bfac-4c525d4452b9)
 
@@ -144,12 +144,6 @@ ___
 #### **03.)** The output can be found as '.parquet' and transformed into Excel, for example:
 
 ![image](https://github.com/user-attachments/assets/b18c3c0e-8efc-49ab-bfac-4c525d4452b9)
-
-___
-
-## More about:
-
-Its use is highly encouraged and recommended for academic and scientific research, content analysis, sentiment and speech. It is free and open, and academic use is encouraged. Its responsible use is the sole responsibility of those who adapt and manipulate the data.
 
 ___
 
