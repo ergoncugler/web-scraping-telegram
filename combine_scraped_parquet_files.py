@@ -4,41 +4,41 @@ from tqdm import tqdm
 import json
 
 def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
-    """
-    Combines multiple Parquet files from a specified folder into a single DataFrame,
-    removes duplicates, adjusts the 'Group' and 'Comments' columns, and saves the result as a Parquet file.
 
-    Parameters:
-    folder_path (str): Path to the folder containing the Parquet files to be combined.
-    duplicate_columns (list of str): List of column names to check for duplicates.
-    output_file_path (str): Path to save the combined Parquet file.
+    # Combines multiple Parquet files from a specified folder into a single DataFrame,
+    # removes duplicates, adjusts the 'Group' and 'Comments' columns, and saves the result as a Parquet file.
+    #
+    # Parameters:
+    # folder_path (str): Path to the folder containing the Parquet files to be combined.
+    # duplicate_columns (list of str): List of column names to check for duplicates.
+    # output_file_path (str): Path to save the combined Parquet file.
+    #
+    # Returns:
+    # None
+    #
+    # Steps:
+    # 1. Read each Parquet file in the specified folder.
+    # 2. Concatenate the data from all Parquet files into a single DataFrame.
+    # 3. Remove rows where 'Group' is '@ohospicio' (commented out).
+    # 4. Remove duplicate rows based on specified columns.
+    # 5. Ensure items in 'Group' column start with '@'.
+    # 6. Recalculate the 'Comments' column by counting occurrences of 'Type': 'comment' in 'Comments List'.
+    # 7. Convert 'Message ID' column to string type.
+    # 8. Convert 'Media' column to boolean type.
+    # 9. Sort the DataFrame by 'Date' in descending order.
+    # 10. Print the number of rows, number of comments, and total contents.
+    # 11. Save the combined DataFrame to a Parquet file.
+    #
+    # Usage:
+    # Place all .parquet files to be unified in the specified folder path.
+    #
+    # Example:
+    # folder_path = r'C:\Users\Public\PyCharmProjects\Data_Conspira'
+    # duplicate_columns = ['Group', 'Message ID']
+    # output_file_path = os.path.join(folder_path, 'data_conspira_telegram.parquet')
+    #
+    # combine_parquet_files(folder_path, duplicate_columns, output_file_path)
 
-    Returns:
-    None
-
-    Steps:
-    1. Read each Parquet file in the specified folder.
-    2. Concatenate the data from all Parquet files into a single DataFrame.
-    3. Remove duplicate rows based on specified columns.
-    4. Ensure items in 'Group' column start with '@'.
-    5. Recalculate the 'Comments' column by counting occurrences of 'Type': 'comment' in 'Comments List'.
-    6. Convert 'Message ID' column to string type.
-    7. Convert 'Media' column to boolean type.
-    8. Sort the DataFrame by 'Date' in descending order.
-    9. Print the number of rows, number of comments, and total contents.
-    10. Save the combined DataFrame to a Parquet file.
-
-    Usage:
-    Place all .parquet files to be unified in the specified folder path.
-
-    Example:
-    folder_path = r'C:\Users\Public\PyCharmProjects\Data_Conspira'
-    duplicate_columns = ['Group', 'Message ID']
-    output_file_path = os.path.join(folder_path, 'unified_data_telegram.parquet')
-
-    combine_parquet_files(folder_path, duplicate_columns, output_file_path)
-    """
-    
     # Function to read data from each Parquet file
     def read_parquet(file_path):
         return pd.read_parquet(file_path)
@@ -47,7 +47,8 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
     file_paths = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if file.endswith('.parquet')]
 
     # Read and combine the data
-    combined_df = pd.concat([df for df in (read_parquet(file) for file in tqdm(file_paths, desc="Reading files")) if not df.empty and not df.isna().all().all()], ignore_index=True)
+    combined_df = pd.concat([df for df in (read_parquet(file) for file in tqdm(file_paths, desc="Reading files")) if
+                             not df.empty and not df.isna().all().all()], ignore_index=True)
 
     # Remove duplicates based on specified columns
     combined_df.drop_duplicates(subset=duplicate_columns, inplace=True)
@@ -66,13 +67,14 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
         combined_df['Comments'] = 0
 
     # Recalculate 'Comments' column with the count of 'Type': 'comment' occurrences in 'Comments List' using tqdm
-    combined_df['Comments'] = [count_comments(row['Comments List']) for row in tqdm(combined_df.to_dict(orient="records"), desc="Calculating Comments")]
+    combined_df['Comments'] = [count_comments(row['Comments List']) for row in
+                               tqdm(combined_df.to_dict(orient="records"), desc="Calculating Comments")]
 
     # Convert 'Comments' column to integers
     combined_df['Comments'] = combined_df['Comments'].astype(int)
 
     # Ensure 'Message ID' column is of string type
-    combined_df['Message ID'] = combined_df['Message ID'].astype(int)
+    combined_df['Message ID'] = combined_df['Message ID'].astype(str)
 
     # Ensure 'Media' column is of boolean type or handle the conversion
     combined_df['Media'] = combined_df['Media'].astype(bool)
@@ -95,9 +97,10 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
 
     print(f" / Combined file saved at: {output_file_path}")
 
+
 # Usage
-folder_path = r'C:\Users\Public\PyCharmProjects\Data_Conspira' # Example
+folder_path = r'C:\Users\Public\PyCharmProjects\Data_Conspira'
 duplicate_columns = ['Group', 'Message ID']
-output_file_path = os.path.join(folder_path, 'unified_data_telegram.parquet') # Example
+output_file_path = os.path.join(folder_path, 'data_conspira_telegram.parquet')
 
 combine_parquet_files(folder_path, duplicate_columns, output_file_path)
