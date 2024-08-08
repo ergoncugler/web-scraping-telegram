@@ -6,33 +6,33 @@ import re
 import json
 
 def remove_urls(text):
-    """
-    Remove URLs from a given text string.
+    
+    # Remove URLs from a given text string.
 
-    Parameters:
-    text (str): The text from which URLs should be removed.
+    # Parameters:
+    # text (str): The text from which URLs should be removed.
 
-    Returns:
-    str: The text without URLs.
-    """
+    # Returns:
+    # str: The text without URLs.
+    
     url_pattern = r'http\S+|www\S+'
     cleaned_text = re.sub(url_pattern, '', text)
     return cleaned_text
 
 def sample_data_proportionally(df, text_column, category_column, sample_size):
-    """
-    Sample data proportionally based on categories to reach a maximum sample size,
-    rounding up and ensuring at least one sample per category.
+    
+    # Sample data proportionally based on categories to reach a maximum sample size,
+    # rounding up and ensuring at least one sample per category.
 
-    Parameters:
-    df (DataFrame): The DataFrame containing the data to sample.
-    text_column (str): The column name containing the text data.
-    category_column (str): The column name containing the category data.
-    sample_size (int): The maximum number of rows to sample.
+    # Parameters:
+    # df (DataFrame): The DataFrame containing the data to sample.
+    # text_column (str): The column name containing the text data.
+    # category_column (str): The column name containing the category data.
+    # sample_size (int): The maximum number of rows to sample.
 
-    Returns:
-    DataFrame: A DataFrame containing the sampled data.
-    """
+    # Returns:
+    # DataFrame: A DataFrame containing the sampled data.
+    
     sample_df = pd.DataFrame()
     categories = df[category_column].unique()
     total_rows = len(df)
@@ -62,43 +62,43 @@ def sample_data_proportionally(df, text_column, category_column, sample_size):
     return sample_df
 
 def create_sampled_file(folder_path, input_filename, text_column, category_column, sample_size, output_filename, min_length):
-    """
-    Create a sampled file based on the input Parquet file.
+    
+    # Create a sampled file based on the input Parquet file.
 
-    Parameters:
-    folder_path (str): The path to the folder containing the Parquet file.
-    input_filename (str): The name of the input Parquet file.
-    text_column (str): The column name containing the text data.
-    category_column (str): The column name containing the category data.
-    sample_size (int): Maximum number of rows to sample.
-    output_filename (str): The name of the output file.
-    min_length (int): Minimum length of text content to include in analysis.
+    # Parameters:
+    # folder_path (str): The path to the folder containing the Parquet file.
+    # input_filename (str): The name of the input Parquet file.
+    # text_column (str): The column name containing the text data.
+    # category_column (str): The column name containing the category data.
+    # sample_size (int): Maximum number of rows to sample.
+    # output_filename (str): The name of the output file.
+    # min_length (int): Minimum length of text content to include in analysis.
 
-    Returns:
-    None
+    # Returns:
+    # None
 
-    Steps:
-    1. Load the Parquet file into a DataFrame.
-    2. Filter the data based on text length.
-    3. Remove URLs from the text column.
-    4. Decode the 'Comments List' column from JSON, if present.
-    5. Sample data proportionally based on categories.
-    6. Save the sampled data to a new Excel file.
+    # Steps:
+    # 1. Load the Parquet file into a DataFrame.
+    # 2. Filter the data based on text length.
+    # 3. Remove URLs from the text column.
+    # 4. Decode the 'Comments List' column from JSON, if present.
+    # 5. Sample data proportionally based on categories.
+    # 6. Save the sampled data to a new Excel file.
 
-    Usage:
-    Place the Parquet file to be sampled in the specified folder path and specify the appropriate column names, sample size, output file name, and minimum text length.
+    # Usage:
+    # Place the Parquet file to be sampled in the specified folder path and specify the appropriate column names, sample size, output file name, and minimum text length.
 
-    Example:
-    create_sampled_file(
-        folder_path=r'C:\Users\Public\PyCharmProjects\Data_Conspira',
-        input_filename="unified_data_telegram.parquet",
-        text_column="Content",
-        category_column="Group",
-        sample_size=10000,
-        output_filename='sampled_data.xlsx',
-        min_length=20
-    )
-    """
+    # Example:
+    # create_sampled_file(
+    #     folder_path=r'C:\Users\Public\PyCharmProjects\Data_Conspira',
+    #     input_filename="unified_data_telegram.parquet",
+    #     text_column="Content",
+    #     category_column="Group",
+    #     sample_size=10000,
+    #     output_filename='sampled_data.xlsx',
+    #     min_length=20
+    # )
+    
     input_file_path = os.path.join(folder_path, input_filename)
 
     # Load the Parquet file into a DataFrame
@@ -126,6 +126,7 @@ def create_sampled_file(folder_path, input_filename, text_column, category_colum
     sample_df.to_excel(output_path, index=False, engine='openpyxl')
 
     print(f"Sampled data saved in file: {output_path}")
+
 
 # Usage
 folder_path = r'C:\Users\Public\PyCharmProjects\Data_Conspira' # Example
