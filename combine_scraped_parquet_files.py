@@ -19,15 +19,14 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
     # Steps:
     # 1. Read each Parquet file in the specified folder.
     # 2. Concatenate the data from all Parquet files into a single DataFrame.
-    # 3. Remove rows where 'Group' is '@ohospicio' (commented out).
-    # 4. Remove duplicate rows based on specified columns.
-    # 5. Ensure items in 'Group' column start with '@'.
+    # 3. Convert 'Message ID' column to string type.
+    # 4. Ensure items in 'Group' column start with '@'.
+    # 5. Remove duplicate rows based on specified columns.
     # 6. Recalculate the 'Comments' column by counting occurrences of 'Type': 'comment' in 'Comments List'.
-    # 7. Convert 'Message ID' column to string type.
-    # 8. Convert 'Media' column to boolean type.
-    # 9. Sort the DataFrame by 'Date' in descending order.
-    # 10. Print the number of rows, number of comments, and total contents.
-    # 11. Save the combined DataFrame to a Parquet file.
+    # 7. Convert 'Media' column to boolean type.
+    # 8. Sort the DataFrame by 'Date' in descending order.
+    # 9. Print the number of rows, number of comments, and total contents.
+    # 10. Save the combined DataFrame to a Parquet file.
     #
     # Usage:
     # Place all .parquet files to be unified in the specified folder path.
@@ -39,24 +38,28 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
     #
     # combine_parquet_files(folder_path, duplicate_columns, output_file_path)
 
-    # Function to read data from each Parquet file
     def read_parquet(file_path):
         return pd.read_parquet(file_path)
 
-    # List of Parquet files in the folder
     file_paths = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if file.endswith('.parquet')]
 
-    # Read and combine the data
     combined_df = pd.concat([df for df in (read_parquet(file) for file in tqdm(file_paths, desc="Reading files")) if
                              not df.empty and not df.isna().all().all()], ignore_index=True)
 
-    # Remove duplicates based on specified columns
-    combined_df.drop_duplicates(subset=duplicate_columns, inplace=True)
+    # Convert 'Message ID' to string type before checking duplicates
+    combined_df['Message ID'] = combined_df['Message ID'].astype(str)
 
-    # Add "@" to the beginning of items in 'Group' column if missing
+    # Add "@" to the beginning of items in 'Group' column if missing before checking duplicates
     combined_df['Group'] = combined_df['Group'].apply(lambda x: x if x.startswith('@') else '@' + x)
 
-    # Define a function to count comments in the 'Comments List' JSON
+    print(f"Number of rows before removing duplicates: {len(combined_df)}")
+    print(f"Checking duplicates based on columns {duplicate_columns}...")
+    print(combined_df.duplicated(subset=duplicate_columns).sum(), "duplicated rows found.")
+
+    combined_df.drop_duplicates(subset=duplicate_columns, inplace=True)
+
+    print(f"Number of rows after removing duplicates: {len(combined_df)}")
+
     def count_comments(comments_list):
         if pd.isna(comments_list):
             return 0
@@ -66,33 +69,22 @@ def combine_parquet_files(folder_path, duplicate_columns, output_file_path):
     if 'Comments' not in combined_df.columns:
         combined_df['Comments'] = 0
 
-    # Recalculate 'Comments' column with the count of 'Type': 'comment' occurrences in 'Comments List' using tqdm
     combined_df['Comments'] = [count_comments(row['Comments List']) for row in
                                tqdm(combined_df.to_dict(orient="records"), desc="Calculating Comments")]
 
-    # Convert 'Comments' column to integers
     combined_df['Comments'] = combined_df['Comments'].astype(int)
-
-    # Ensure 'Message ID' column is of string type
-    combined_df['Message ID'] = combined_df['Message ID'].astype(str)
-
-    # Ensure 'Media' column is of boolean type or handle the conversion
     combined_df['Media'] = combined_df['Media'].astype(bool)
 
-    # Sort 'Date' as z-a
     combined_df['Date'] = pd.to_datetime(combined_df['Date'])
     combined_df = combined_df.sort_values(by='Date', ascending=False)
 
-    # Calculate the number of comments
     num_comments = combined_df['Comments'].sum()
 
-    # Print the number of rows, number of comments, and total contents (rows + comments)
     print("\n")
     print(f" / Number of rows in the combined dataframe: {len(combined_df)}")
     print(f" / Number of comments: {num_comments}")
     print(f" / Total contents (rows + comments): {len(combined_df) + num_comments}")
 
-    # Save the combined DataFrame to a Parquet file
     combined_df.to_parquet(output_file_path, index=False)
 
     print(f" / Combined file saved at: {output_file_path}")
