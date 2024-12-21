@@ -174,4 +174,4 @@ ___
 
 ## How to cite it:
 
-**SILVA, Ergon Cugler de Moraes. *Web Scraping Telegram Posts and Content*. (feb) 2023. Avaliable at: [https://github.com/ergoncugler/web-scraping-telegram/](https://github.com/ergoncugler/web-scraping-telegram/).**
+**SILVA, Ergon Cugler de Moraes. *TelegramScrap: A comprehensive tool for scraping Telegram data*. (feb) 2023. Available at: [https://github.com/ergoncugler/web-scraping-telegram/](https://github.com/ergoncugler/web-scraping-telegram/).**
