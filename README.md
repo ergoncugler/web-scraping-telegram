@@ -36,6 +36,8 @@ ___
 
 Here you need to input your credentials like `username, phone, api_id and api_hash`. Your api_id and your api_hash, **it can be only generated from ([https://my.telegram.org/apps](https://my.telegram.org/apps))**. Once you set your details for the first time, you no longer need to update, just click play.
 
+![image](https://github.com/user-attachments/assets/c9aaf8a0-e17b-4b6c-a686-9aa2b92e61f9)
+
 ```python
 # @title **1. [ Required ] Set up your credentials once** { display-mode: "form" }
 
@@ -73,6 +75,8 @@ api_hash = '1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a' # @param {type:"string"}
 
 In this section, you will define the parameters for scraping data from Telegram channels or groups. Specify the channels you want to scrape using the format `@ChannelName` or the full URL `https://t.me/ChannelName`. Do not use URLs starting with `https://web.telegram.org/`. Set the date range by defining the start and end day, month, and year. Choose an output file name for the scraped data. Optionally, set a search keyword if you need to filter messages by specific terms. Define the maximum number of messages to scrape and set a timeout in seconds.
 
+![image](https://github.com/user-attachments/assets/e882df7c-cc0b-4d03-8feb-ad7dbef86be3)
+
 ```python
 # @title **2. [ Required ] Adjust every time you want to use it** { display-mode: "form" }
 
@@ -109,6 +113,8 @@ File = 'excel' # @param ["excel", "parquet"]
 ```
 
 ### Done? You can run it!
+
+![image](https://github.com/user-attachments/assets/f962783c-9f5d-44f0-808a-c86dd2cf5eae)
 
 ___
 
