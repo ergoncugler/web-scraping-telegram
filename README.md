@@ -30,16 +30,6 @@ Once the data is extracted into `.parquet` files, various authoring tools are av
 Its use is highly encouraged and recommended for academic and scientific research, content analysis, sentiment analysis, and speech analysis. While it is free to use and modify, the responsibility for its use and any modifications lies with the user. Feel free to explore, utilize, and adapt the code to suit your needs, but please ensure you comply with Telegram's terms of service and data privacy regulations. This tool is released under a free and open-source license. When using or modifying the tool, please ensure to provide appropriate credit and citation. Referencing the tool in your research is appreciated and contributes to its continued development and improvement.
 ___
 
-## !Pip before coding
-
-```python
-# Install the Telethon library for Telegram API interactions
-!pip install telethon
-
-```
-
-___
-
 ## Setup
 
 ### Just the first time:
