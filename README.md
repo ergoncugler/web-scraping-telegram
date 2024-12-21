@@ -47,6 +47,13 @@ ___
 Here you need to input your credentials like `username, phone, api_id and api_hash`. Your api_id and your api_hash, **it can be only generated from ([https://my.telegram.org/apps](https://my.telegram.org/apps))**. Once you set your details for the first time, you no longer need to update, just click play.
 
 ```python
+# @title **1. [ Required ] Set up your credentials once** { display-mode: "form" }
+
+# @markdown Here, you need to input your credentials: `username`, `phone`, `api_id`, and `api_hash`. Your `api_id` and `api_hash` can only be generated from [Telegram's app creation page](https://my.telegram.org/apps). Once your credentials are set up, you won’t need to update them again. Just click “Run” to proceed.
+
+# Install the Telethon library for Telegram API interactions
+!pip install -q telethon
+
 # Initial imports
 from datetime import datetime, timezone
 import pandas as pd
@@ -61,10 +68,14 @@ from telethon.sync import TelegramClient
 from google.colab import files
 
 # Setup / change only the first time you use it
-username = 'your_username'  # Your Telegram account username (just 'abc123', not '@')
-phone = '+5511999999999'  # Your Telegram account phone number (ex: '+5511999999999')
-api_id = '11111111'  # Your API ID, it can be only generated from https://my.telegram.org/apps
-api_hash = '1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a'  # Your API hash, also from https://my.telegram.org/apps
+# @markdown **1.1.** Your Telegram account username (just 'abc123', not '@'):
+username = 'your_username' # @param {type:"string"}
+# @markdown **1.2.** Your Telegram account phone number (ex: '+5511999999999'):
+phone = '+5511999999999' # @param {type:"string"}
+# @markdown **1.3.** Your API ID, it can be only generated from https://my.telegram.org/apps:
+api_id = '11111111' # @param {type:"string"}
+# @markdown **1.4.** Your API hash, also from https://my.telegram.org/apps:
+api_hash = '1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a' # @param {type:"string"}
 
 ```
 
@@ -73,25 +84,37 @@ api_hash = '1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a'  # Your API hash, also from https:
 In this section, you will define the parameters for scraping data from Telegram channels or groups. Specify the channels you want to scrape using the format `@ChannelName` or the full URL `https://t.me/ChannelName`. Do not use URLs starting with `https://web.telegram.org/`. Set the date range by defining the start and end day, month, and year. Choose an output file name for the scraped data. Optionally, set a search keyword if you need to filter messages by specific terms. Define the maximum number of messages to scrape and set a timeout in seconds.
 
 ```python
-# Setup / change every time to define scraping parameters
-channels = [
-    '@LulanoTelegram',
-    '@jairbolsonarobrasil',
-]
-# Here you put the name of the channel or group that you want to scrape
-# As an example, play: '@LulanoTelegram' or 'https://t.me/LulanoTelegram'
-# Do not use: 'https://web.telegram.org/a/#-1001249230829' or '-1001249230829'
+# @title **2. [ Required ] Adjust every time you want to use it** { display-mode: "form" }
 
-d_min = 1  # Start day (inclusive)
-m_min = 1  # Start month
-y_min = 2000  # Start year
-d_max = 1  # End day (exclusive)
-m_max = 8  # End month
-y_max = 2024  # End year
-file_name = 'Test'  # Output file name
-key_search = ''  # Keyword to search, leave empty if not needed
-max_t_index = 1000000  # Maximum number of messages to scrape
-time_limit = 6 * 60 * 60  # Timeout in hours (*seconds)
+# @markdown In this section, you will define the parameters for scraping data from Telegram channels or groups. Specify the channels you want to scrape using the format `@ChannelName` or the full URL `https://t.me/ChannelName`. Do not use URLs starting with `https://web.telegram.org/`. Set the date range by defining the start and end day, month, and year. Choose an output file name for the scraped data. Optionally, set a search keyword if you need to filter messages by specific terms. Define the maximum number of messages to scrape and set a timeout in seconds.
+
+# Setup / change every time to define scraping parameters
+
+# @markdown **2.1.** Here you put the name of the channel or group that you want to scrape, as an example, play: '@LulanoTelegram' or 'https://t.me/LulanoTelegram'. Do not use: 'https://web.telegram.org/a/#-1001249230829' or '-1001249230829'. **Just write the `channel names` always separated by commas (,):**
+channels = "@LulanoTelegram, @jairbolsonarobrasil, @Other_Channel_Name" # @param {type:"string"}
+channels = [channel.strip() for channel in channels.split(",")]
+
+# @markdown **2.2.** Here you can select the `time window` you would like to extract data from the listed communities:
+date_min = '2024-10-15' # @param {type:"date"}
+date_max = '2025-01-15' # @param {type:"date"}
+
+date_min = datetime.fromisoformat(date_min).replace(tzinfo=timezone.utc)
+date_max = datetime.fromisoformat(date_max).replace(tzinfo=timezone.utc)
+
+# @markdown **2.3.** Choose a `name` for the final file you want to download as output:
+file_name = 'Test' # @param {type:"string"}
+
+# @markdown **2.4.** `Keyword` to search, **leave empty if you want to extract all messages from the channel(s):**
+key_search = '' # @param {type:"string"}
+
+# @markdown **2.5.** **Maximum** `number of messages` to scrape (only use if you want a specific limit, otherwise leave a high number to scrape everything):
+max_t_index = 1000000   # @param {type:"integer"}
+
+# @markdown **2.6.** `Timeout in seconds` (never leave it longer than 6 hours, that is 21600 seconds, as Google Colab deactivates itself after that time):
+time_limit = 21600 # @param {type:"integer"}
+
+# @markdown **2.7.** Choose the format of the final file you want to download. If you are a first-time user, choose `Excel`. If you have advanced skills, you can use `Parquet`:
+File = 'excel' # @param ["excel", "parquet"]
 
 ```
 
