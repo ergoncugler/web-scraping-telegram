@@ -1,4 +1,8 @@
-# TelegramScrap: A comprehensive tool for scraping Telegram posts and contents [new version updated in August 2024]
+# TelegramScrap: A comprehensive tool for scraping Telegram posts and contents [new version updated in December 2024]
+
+### - **Official Paper DOI: [10.48550/arXiv.2412.16786](https://doi.org/10.48550/arXiv.2412.16786) (ArXiv by Cornell University)**
+### - **Also available at: [Stanford SearchWorks Repository](https://searchworks.stanford.edu/articles/edsarx__edsarx.2412.16786) and [Harvard/NASA ADS Repository](https://ui.adsabs.harvard.edu/abs/2024arXiv241216786C/abstract)**
+___
 
 This code ([**available here on Github**](https://github.com/ergoncugler/web-scraping-telegram/blob/main/TelegramScrap_A_comprehensive_tool_for_scraping_Telegram_data.ipynb) */or/* [**directly on Google Colab, just play it**](https://colab.research.google.com/drive/1lzn_XomUI9uCMLkGjQf6-2JnkKazgevh?usp=sharing)) aims to scrape data from selected `Telegram Channels, Groups, or Chats` using the `Telethon Library`. It is designed to facilitate the extraction of various data fields including `message content, author information, reactions, views, and comments`. The primary functions of this code include setting up scraping parameters, processing messages and their associated comments, and handling unsupported characters to ensure data integrity. Data is stored in `Apache Parquet files (.parquet)`, which are highly efficient for both storage and processing, making them superior to traditional spreadsheets in terms of speed and scalability. This tool is particularly **useful for researchers and analysts** looking to collect and analyze Telegram data efficiently.
 
@@ -174,4 +178,4 @@ ___
 
 ## How to cite it:
 
-**SILVA, Ergon Cugler de Moraes. *TelegramScrap: A comprehensive tool for scraping Telegram data*. (feb) 2023. Available at: [https://github.com/ergoncugler/web-scraping-telegram/](https://github.com/ergoncugler/web-scraping-telegram/).**
+**SILVA, Ergon Cugler de Moraes. *TelegramScrap: A comprehensive tool for scraping Telegram data*. (feb) 2023. Available at: [https://doi.org/10.48550/arXiv.2412.16786](https://doi.org/10.48550/arXiv.2412.16786).**
