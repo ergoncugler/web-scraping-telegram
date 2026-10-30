@@ -184,6 +184,6 @@ ___
 
 ## License
 
-The code in this repository are released under the [MIT License](LICENSE). You are free to use and adapt them, provided you give appropriate credit. If this work supports your research, please cite it.
+The code in this repository is released under the [MIT License](LICENSE). You are free to use and adapt them, provided you give appropriate credit. If this work supports your research, please cite it.
 
 Developed by [Ergon Cugler](https://ergoncugler.com).
