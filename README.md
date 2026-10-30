@@ -179,3 +179,11 @@ ___
 ## How to cite it:
 
 **SILVA, Ergon Cugler de Moraes. *TelegramScrap: A comprehensive tool for scraping Telegram data*. (feb) 2023. Available at: [https://doi.org/10.48550/arXiv.2412.16786](https://doi.org/10.48550/arXiv.2412.16786).**
+
+___
+
+## License
+
+The code in this repository are released under the [MIT License](LICENSE). You are free to use and adapt them, provided you give appropriate credit. If this work supports your research, please cite it.
+
+Developed by [Ergon Cugler](https://ergoncugler.com).
